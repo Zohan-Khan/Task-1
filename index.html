@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><h1>User Form</title></h1>
+<script>
+function toggleButtons() {
+    var serverOption = document.getElementById('serverOption').value;
+    var role = document.getElementById('role').value;
+    
+    // Enable/disable buttons based on conditions
+    var btnLogin = document.getElementById('btnLogin');
+    var btnReset = document.getElementById('btnReset');
+
+    if (serverOption === 'ko') {
+        btnLogin.disabled = true;
+        btnReset.disabled = true;
+    } else {
+        btnLogin.disabled = false;
+        btnReset.disabled = false;
+    }
+}
+
+function resetForm() {
+    document.getElementById('userForm').reset();
+}
+</script>
+</head>
+<body>
+<h2>User Form</h2>
+<form id="userForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="city">City of Employment:</label>
+    <input type="text" id="city" name="city" required><br><br>
+
+    <label for="serverOption">Choose a server option:</label>
+    <select id="serverOption" name="serverOption" onchange="toggleButtons()" required>
+        <option value="">Select...</option>
+        <option value="web">Web Server</option>
+        <option value="graphic">Graphic Server</option>
+        <option value="google">Google Server</option>
+        <option value="ko">Keep Disabled</option>
+    </select><br><br>
+
+    <label for="role">Specify your role:</label>
+    <select id="role" name="role" onchange="toggleButtons()" required>
+        <option value="">Select...</option>
+        <option value="admin">Admin</option>
+        <option value="engineer">Engineer</option>
+        <option value="manager">Manager</option>
+        <option value="guest">Guest</option>
+        <option value="sso">Single Sign-On</option>
+    </select><br><br>
+
+    <button type="submit" id="btnLogin">Login</button>
+    <button type="button" id="btnReset" onclick="resetForm()">Reset</button>
+</form>
+</body>
+</html>
